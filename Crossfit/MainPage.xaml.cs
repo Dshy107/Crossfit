@@ -26,5 +26,10 @@ namespace Crossfit
         {
             this.InitializeComponent();
         }
+
+        private void textBox2_TextChanged(object sender, TextChangedEventArgs e)
+        {
+
+        }
     }
 }

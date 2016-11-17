@@ -15,5 +15,11 @@
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <ListView x:Name="listView" HorizontalAlignment="Left" Height="509" Margin="36,29,0,0" VerticalAlignment="Top" Width="417" ItemsSource="{Binding Wodliste}" SelectedItem="{Binding SelectedWod, Mode=TwoWay}"/>
         <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="453,68,0,0" TextWrapping="Wrap" Text="{Binding SelectedWod}" VerticalAlignment="Top" Height="83" Width="336"/>
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Margin="1014,30,0,0" TextWrapping="Wrap" Text="{Binding NewWod.WodName, Mode=TwoWay}" VerticalAlignment="Top" Width="159" PlaceholderText="Wod Name" Header="Wod name"/>
+        <TextBox x:Name="textBox1" HorizontalAlignment="Left" Margin="1014,101,0,0" TextWrapping="Wrap" Text="{Binding NewWod.Description, Mode=TwoWay}" VerticalAlignment="Top" Width="159" PlaceholderText="Description" Header="Description"/>
+        <TextBox x:Name="textBox2" HorizontalAlignment="Left" Margin="1014,169,0,0" TextWrapping="Wrap" Text="{Binding NewWod.Movement1, Mode=TwoWay}" VerticalAlignment="Top" Width="159" TextChanged="textBox2_TextChanged" PlaceholderText="Movement 1" Header="Movement 1"/>
+        <TextBox x:Name="textBox3" HorizontalAlignment="Left" Margin="1014,238,0,0" TextWrapping="Wrap" Text="{Binding NewWod.Movement2, Mode=TwoWay}" VerticalAlignment="Top" Width="159" PlaceholderText="Movement 2" Header="Movement 2"/>
+        <TextBox x:Name="textBox4" HorizontalAlignment="Left" Margin="1014,305,0,0" TextWrapping="Wrap" Text="{Binding NewWod.Number, Mode=TwoWay}" VerticalAlignment="Top" Width="159" PlaceholderText="Number" Header="NUmber"/>
+        <TextBox x:Name="textBox5" HorizontalAlignment="Left" Margin="1014,370,0,0" TextWrapping="Wrap" Text="{Binding NewWod.gender, Mode=TwoWay}" VerticalAlignment="Top" Width="159" PlaceholderText="Gender" Header="Gender"/>
     </Grid>
 </Page>

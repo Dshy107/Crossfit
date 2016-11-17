@@ -24,6 +24,8 @@ namespace Crossfit.ViewModel
             }
         }
 
+        public Model.Wod NewWod { get; set; }
+
 
         public WodViewModel()
         {
