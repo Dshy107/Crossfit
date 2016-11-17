@@ -26,11 +26,20 @@ namespace Crossfit.ViewModel
 
         public Model.Wod NewWod { get; set; }
 
+        
 
         public WodViewModel()
         {
             Wodliste = new Model.WodList();
             _selectedWod = new Model.Wod();
+            AddWodCommand = new RelayCommand(AddNewWod);
+        }
+
+        public RelayCommand AddWodCommand { get; set; }
+
+        public void AddNewWod()
+        {
+            Wodliste.Add(NewWod);
         }
 
         protected virtual void OnPropertyChanged(string propertyName)
