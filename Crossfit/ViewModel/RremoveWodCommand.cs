@@ -7,18 +7,25 @@ using System.Windows.Input;
 
 namespace Crossfit.ViewModel
 {
-    class RremoveWodCommand : ICommand
+   public class RremoveWodCommand : ICommand
     {
+        private readonly Action execute;
+
+        public RremoveWodCommand(Action execute)
+        {
+            this.execute = execute;
+        }
+
         public event EventHandler CanExecuteChanged;
 
         public bool CanExecute(object parameter)
         {
-            throw new NotImplementedException();
+            return true;
         }
 
         public void Execute(object parameter)
         {
-            throw new NotImplementedException();
+            execute();
         }
     }
 }

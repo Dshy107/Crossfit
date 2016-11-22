@@ -11,6 +11,8 @@ namespace Crossfit.ViewModel
     {
         public AddWodCommand AddWodCommand { get; set; }
 
+        public RremoveWodCommand RemoveWodCommand { get; set; }
+
         public Model.WodList Wodliste { get; set; }
 
         private Model.Wod _selectedWod;
@@ -23,6 +25,7 @@ namespace Crossfit.ViewModel
             set { _selectedWod = value;
                 OnPropertyChanged(nameof(SelectedWod));
             }
+
         }
 
         public Model.Wod NewWod { get; set; }
@@ -31,10 +34,12 @@ namespace Crossfit.ViewModel
 
         public WodViewModel()
         {
+
             Wodliste = new Model.WodList();
             _selectedWod = new Model.Wod();
             AddWodCommand = new AddWodCommand(AddNewWod);
             NewWod = new Model.Wod();
+            RemoveWodCommand = new RremoveWodCommand(RemoveThisWod);
             //AddWodCommand = new RelayCommand(AddNewWod);
         }
 
@@ -45,6 +50,10 @@ namespace Crossfit.ViewModel
             Wodliste.Add(NewWod);
         }
 
+        public void RemoveThisWod()
+        {
+            Wodliste.Remove(SelectedWod);
+        }
         protected virtual void OnPropertyChanged(string propertyName)
         {
             if (PropertyChanged != null)
