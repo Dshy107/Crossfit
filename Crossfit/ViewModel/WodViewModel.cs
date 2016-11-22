@@ -9,6 +9,7 @@ namespace Crossfit.ViewModel
 {
     public class WodViewModel : INotifyPropertyChanged
     {
+        public AddWodCommand AddWodCommand { get; set; }
 
         public Model.WodList Wodliste { get; set; }
 
@@ -32,10 +33,12 @@ namespace Crossfit.ViewModel
         {
             Wodliste = new Model.WodList();
             _selectedWod = new Model.Wod();
-            AddWodCommand = new RelayCommand(AddNewWod);
+            AddWodCommand = new AddWodCommand(AddNewWod);
+            NewWod = new Model.Wod();
+            //AddWodCommand = new RelayCommand(AddNewWod);
         }
 
-        public RelayCommand AddWodCommand { get; set; }
+        //public RelayCommand AddWodCommand { get; set; }
 
         public void AddNewWod()
         {
