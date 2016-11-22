@@ -12,13 +12,12 @@ namespace Crossfit.Model
         public string Description { get; set; }
         public string Movement1 { get; set; }
         public string Movement2 { get; set; }
-        public int Number { get; set; }
-        public bool gender { get; set; }
+   
 
 
         public override string ToString()
         {
-            return WodName + " \n " + Description + "\n  " + Movement1 + "\n  " + Movement2 + " \n " + Number + " \n " + gender+ "\n ";
+            return WodName + " \n " + Description + "\n  " + Movement1 + "\n  " + Movement2 + " \n ";
         }
     }
 }
