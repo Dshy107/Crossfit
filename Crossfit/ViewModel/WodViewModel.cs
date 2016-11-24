@@ -48,7 +48,12 @@ namespace Crossfit.ViewModel
 
         public async void HentDataFraDiskAsync()
         {
+            this.Wodliste.Clear();
 
+            StorageFile file = await localfolder.GetFileAsync(filnavn);
+            string jsonText = await FileIO.ReadTextAsync(file);
+
+            Wodliste.IndsetJson(jsonText);
         }
        
        /// <summary>
