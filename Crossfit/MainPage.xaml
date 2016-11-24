@@ -21,6 +21,7 @@
         <TextBox x:Name="textBox3" HorizontalAlignment="Left" Margin="1014,238,0,0" TextWrapping="Wrap" Text="{Binding NewWod.Movement2, Mode=TwoWay}" VerticalAlignment="Top" Width="159" PlaceholderText="Movement 2" Header="Movement 2"/>
         <Button x:Name="Add" Content="Add Wod" HorizontalAlignment="Left" Margin="336,568,0,0" VerticalAlignment="Top" Command="{Binding AddWodCommand}"/>
         <Button x:Name="Remove" Content="Remove Wod" HorizontalAlignment="Left" Margin="540,568,0,0" VerticalAlignment="Top" Command="{Binding RemoveWodCommand}"/>
-
+        <Button x:Name="Save" Content="Save Wod" HorizontalAlignment="Left" Margin="740,568,0,0" VerticalAlignment="Top" Command="{Binding SaveWodCommand}" />
+        <Button x:Name="Hent" Content="Hent Wod" HorizontalAlignment="Left" Margin="940,568,0,0" VerticalAlignment="Top" Command="{Binding LoadWodCommand}" />
     </Grid>
 </Page>
