@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
 using Windows.Storage;
+using Windows.UI.Popups;
 
 namespace Crossfit.ViewModel
 {
@@ -13,6 +14,7 @@ namespace Crossfit.ViewModel
         StorageFolder localfolder = null;
         private readonly string filnavn = "JsonText.json";
 
+        public Model.Wod NewWod { get; set; }
         public AddWodCommand AddWodCommand { get; set; }
         public RremoveWodCommand RemoveWodCommand { get; set; }
         public SaveWodCommand SaveWodCommand { get; set; }
@@ -23,16 +25,15 @@ namespace Crossfit.ViewModel
        
         public WodViewModel()
         {
-
+            NewWod = new Model.Wod();
+            AddWodCommand = new AddWodCommand(AddNewWod);
             Wodliste = new Model.WodList();
             _selectedWod = new Model.Wod();
-            AddWodCommand = new AddWodCommand(AddNewWod);
-            NewWod = new Model.Wod();
             RemoveWodCommand = new RremoveWodCommand(RemoveThisWod);
             SaveWodCommand = new SaveWodCommand(GemDataTilDiskAsync);
             LoadWodCommand = new LoadWodCommand(HentDataFraDiskAsync);
-
             localfolder = ApplicationData.Current.LocalFolder;
+            HentDataFraDiskAsync();
         }
 
         public Model.Wod SelectedWod
@@ -41,19 +42,23 @@ namespace Crossfit.ViewModel
             set { _selectedWod = value;
                 OnPropertyChanged(nameof(SelectedWod));
             }
-
         }
-
-        public Model.Wod NewWod { get; set; }
 
         public async void HentDataFraDiskAsync()
         {
-            this.Wodliste.Clear();
-
-            StorageFile file = await localfolder.GetFileAsync(filnavn);
-            string jsonText = await FileIO.ReadTextAsync(file);
-
-            Wodliste.IndsetJson(jsonText);
+            // this.Wodliste.Clear();
+            try
+            {
+                StorageFile file = await localfolder.GetFileAsync(filnavn);
+                string jsonText = await FileIO.ReadTextAsync(file);
+                this.Wodliste.Clear();
+                Wodliste.IndsetJson(jsonText);
+            }
+            catch (Exception)
+            {
+                MessageDialog messageDialog = new MessageDialog("Ændret filnavn eller har du ikke gemt ?", "Filnavn");
+                await messageDialog.ShowAsync();
+            }
         }
        
        /// <summary>
@@ -68,16 +73,18 @@ namespace Crossfit.ViewModel
 
         public void AddNewWod()
         {
-            Wodliste.Add(NewWod);
+            var tempWod = new Model.Wod();
+            tempWod.WodName = NewWod.WodName;
+            tempWod.Description = NewWod.Description;
+            tempWod.Movement1 = NewWod.Movement1;
+            tempWod.Movement2 = NewWod.Movement2;
+            Wodliste.Add(tempWod);
         }
 
         public void RemoveThisWod()
         {
             Wodliste.Remove(SelectedWod);
         }
-
-
-
 
         protected virtual void OnPropertyChanged(string propertyName)
         {
