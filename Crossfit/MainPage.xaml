@@ -5,6 +5,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:ViewModel="using:Crossfit.ViewModel"
+    xmlns:Interactivity="using:Microsoft.Xaml.Interactivity" xmlns:Core="using:Microsoft.Xaml.Interactions.Core"
     x:Class="Crossfit.MainPage"
     mc:Ignorable="d">
 
@@ -23,5 +24,12 @@
         <Button x:Name="Remove" Content="Remove Wod" HorizontalAlignment="Left" Margin="540,568,0,0" VerticalAlignment="Top" Command="{Binding RemoveWodCommand}"/>
         <Button x:Name="Save" Content="Save Wod" HorizontalAlignment="Left" Margin="740,568,0,0" VerticalAlignment="Top" Command="{Binding SaveWodCommand}" />
         <Button x:Name="Hent" Content="Hent Wod" HorizontalAlignment="Left" Margin="940,568,0,0" VerticalAlignment="Top" Command="{Binding LoadWodCommand}" />
+        <Button x:Name="button" Content="Button" Margin="453,0,0,179" VerticalAlignment="Bottom">
+            <Interactivity:Interaction.Behaviors>
+                <Core:EventTriggerBehavior EventName="Click">
+                    <Core:NavigateToPageAction TargetPage="Crossfit.View.Test"/>
+                </Core:EventTriggerBehavior>
+            </Interactivity:Interaction.Behaviors>
+        </Button>
     </Grid>
 </Page>

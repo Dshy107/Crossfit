@@ -20,6 +20,9 @@ namespace Crossfit.ViewModel
         public SaveWodCommand SaveWodCommand { get; set; }
         public LoadWodCommand LoadWodCommand{ get; set; }
         public Model.WodList Wodliste { get; set; }
+
+   
+
         private Model.Wod _selectedWod;
         public event PropertyChangedEventHandler PropertyChanged;
        
@@ -56,8 +59,8 @@ namespace Crossfit.ViewModel
             }
             catch (Exception)
             {
-                MessageDialog messageDialog = new MessageDialog("Ændret filnavn eller har du ikke gemt ?", "Filnavn");
-                await messageDialog.ShowAsync();
+              /*  MessageDialog messageDialog = new MessageDialog("Ændret filnavn eller har du ikke gemt ?", "Filnavn");
+                await messageDialog.ShowAsync(); */
             }
         }
        

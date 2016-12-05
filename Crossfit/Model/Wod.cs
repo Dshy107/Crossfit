@@ -13,8 +13,6 @@ namespace Crossfit.Model
         public string Movement1 { get; set; }
         public string Movement2 { get; set; }
    
-
-
         public override string ToString()
         {
             return WodName + " \n " + Description + "\n  " + Movement1 + "\n  " + Movement2 + " \n ";
